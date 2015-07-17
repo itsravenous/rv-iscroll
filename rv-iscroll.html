@@ -25,7 +25,7 @@ Example:
       display: block;
       width: 100%;
       height: 100%;
-      position: absolute;
+      position: relative;
     }
 
     :host #wrapper {
@@ -88,18 +88,46 @@ Example:
 Polymer({
   is: 'rv-iscroll',
 
-  scrollY: {
-    value: true
-  },
-  scrollX: {
-    value: false
-  },
-  zoom: {
-    value: false
-  },
-  freeScroll: {
-    value: false
-  },
+  properties: {
+
+
+      /**
+       * Whether to allow horizontal scrolling
+       * @type {Boolean}
+       */
+      scrollX: {
+        type: Boolean,
+        value: false
+      },
+
+     /**
+       * Whether to allow pinch-zooming
+       * @type {Boolean}
+       */
+      zoom: {
+        type: Boolean,
+        value: false
+      },
+
+     /**
+       * Whether to allow panning when zoomed
+       * @type {Boolean}
+       */
+      freeScroll: {
+        type: Boolean,
+        value: false
+      },
+
+      /**
+       * Whether to allow vertical scrolling
+       * @type {Boolean}
+       */
+      scrollY: {
+        type: Boolean,
+        value: true
+      },
+
+    },
 
   ready: function () {
     var options = {
@@ -109,7 +137,10 @@ Polymer({
       freeScroll : this.freeScroll,
     };
 
-    this.myScroll = new IScroll(this.$.wrapper, options);
+    // If we don't wrap in setTimeout, y-scrolling doesn't immediately work in Chrome for Android :S
+    setTimeout(function () {
+      this.myScroll = new IScroll(this.$.wrapper, options);
+    }.bind(this));
   }
 });
 
