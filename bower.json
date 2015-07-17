@@ -1,0 +1,30 @@
+{
+  "name": "rv-iscroll",
+  "version": "1.0.0",
+  "authors": [
+    "Tom Jenkins <tom@itsravenous.com>"
+  ],
+  "description": "A Polymer 1.0 element for using iScroll, including scrolling, panning and pinch-zoom. Basically x-iscroll by YannickDot, upgraded to Polymer 1.0.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "seed"
+  ],
+  "main": "rv-iscroll.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/itsravenous/rv-iscroll/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/demo/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "iscroll": "~5.1.3"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  }
+}
