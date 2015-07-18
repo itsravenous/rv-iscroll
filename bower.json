@@ -4,12 +4,14 @@
   "authors": [
     "Tom Jenkins <tom@itsravenous.com>"
   ],
-  "description": "A Polymer 1.0 element for using iScroll, including scrolling, panning and pinch-zoom. Basically x-iscroll by YannickDot, upgraded to Polymer 1.0.",
+  "description": "A Polymer 1.0 element for using iScroll, including scrolling, panning and pinch-zoom. Basically x-iscroll by YannickDot Leviff, upgraded to Polymer 1.0.",
   "keywords": [
     "web-component",
     "web-components",
     "polymer",
-    "seed"
+    "scroll",
+    "iscroll",
+    "pinch zoom"
   ],
   "main": "rv-iscroll.html",
   "license": "http://polymer.github.io/LICENSE.txt",
