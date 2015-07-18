@@ -1,0 +1,149 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+A Polymer 1.0 element for using iScroll, including scrolling, panning and pinch-zoom. Basically x-iscroll by YannickDot Leviff, upgraded to Polymer 1.0.
+
+Example:
+
+    <rv-iscroll></rv-iscroll>
+
+@demo
+-->
+<dom-module id="rv-iscroll">
+
+  <style>
+    :host {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    :host #wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+
+      /* Prevent native touch events on Windows */
+      -ms-touch-action: none;
+
+      /* Prevent the callout on tap-hold and text selection */
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      /* Prevent text resize on orientation change, useful for web-apps */
+      -webkit-text-size-adjust: none;
+      -moz-text-size-adjust: none;
+      -ms-text-size-adjust: none;
+      -o-text-size-adjust: none;
+      text-size-adjust: none;
+    }
+
+    :host #scroller {
+      position: absolute;
+
+      /* Prevent elements to be highlighted on tap */
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+      /* Put the scroller into the HW Compositing layer right from the start */
+      -webkit-transform: translateZ(0);
+      -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      -o-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    ::content {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
+  <template>
+    <div id="wrapper">
+        <div id="scroller">
+          <content></content>
+        </div>
+    </div>
+  </template>
+
+</dom-module>
+
+<script src="../iscroll/build/iscroll-zoom.js"></script>
+<script>
+
+Polymer({
+  is: 'rv-iscroll',
+
+  properties: {
+
+
+      /**
+       * Whether to allow horizontal scrolling
+       * @type {Boolean}
+       */
+      scrollX: {
+        type: Boolean,
+        value: false
+      },
+
+     /**
+       * Whether to allow pinch-zooming
+       * @type {Boolean}
+       */
+      zoom: {
+        type: Boolean,
+        value: false
+      },
+
+     /**
+       * Whether to allow panning when zoomed
+       * @type {Boolean}
+       */
+      freeScroll: {
+        type: Boolean,
+        value: false
+      },
+
+      /**
+       * Whether to allow vertical scrolling
+       * @type {Boolean}
+       */
+      scrollY: {
+        type: Boolean,
+        value: true
+      },
+
+    },
+
+  ready: function () {
+    var options = {
+      zoom : this.zoom,
+      scrollY : this.scrollY,
+      scrollX : this.scrollX,
+      freeScroll : this.freeScroll,
+    };
+
+    // If we don't wrap in setTimeout, y-scrolling doesn't immediately work in Chrome for Android :S
+    setTimeout(function () {
+      this.myScroll = new IScroll(this.$.wrapper, options);
+    }.bind(this));
+  }
+});
+
+
+
+</script>
