@@ -2,6 +2,12 @@
 
 A web component built with Polymer 1.0, providing scrolling and pinch-zoom/panning via [IScroll](http://iscrolljs.com). Heavily based on [x-iscoll](https://github.com/YannickDot/x-iscroll) (which is built with Polymer 0.3.3).
 
+## Requirements
+[Polymer 1.0](https://polymer-project.org)
+
+## Installation 
+`bower install rv-iscroll`
+
 ## Usage
 
 ```
@@ -9,7 +15,7 @@ A web component built with Polymer 1.0, providing scrolling and pinch-zoom/panni
 <link rel="import" href="bower_components/rv-iscroll/rv-iscroll.html">
 
 <!-- Use it! -->
-<rv-iscroll></rv-iscroll>
+<rv-iscroll><img src="http://placebear.com/400/400.jpg"></rv-iscroll>
 ```
 
 ## Options
@@ -45,6 +51,8 @@ Then, you can run your tests on _all_ of your local browsers via:
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style.
+
+To serve the component demo from this repo, run `polyserve` in the project root (`npm install -g polyserve` if you don't already have it). **The demo will not work except in polyserve, which normalises the path to the polymer webcomponents polyfill**
 
 ## Thanks
 1. To [Matteo Spinelli](http://cubiq.org/), author of IScroll and many other fantastic projects.
